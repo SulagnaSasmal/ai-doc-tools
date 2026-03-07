@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI &amp; Automation Tools — Sulagna Sasmal</title>
+  <meta name="description" content="AI-powered and automation tools built by Sulagna Sasmal — DocCraft AI, SpecFlow, DocQuery, DocPulse, PPT→MP4. Technical Writer & Documentation Engineer." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AI &amp; Automation Tools — Sulagna Sasmal" />
+  <meta property="og:description" content="DocCraft AI, SpecFlow, DocQuery, DocPulse, PPT→MP4 — AI-powered documentation and automation tools." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='28'>🤖</text></svg>" />
+
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --amber:        #D97706;
+      --amber-light:  #FEF3C7;
+      --indigo:       #4F46E5;
+      --indigo-light: #EEF2FF;
+      --teal:         #0D9488;
+      --teal-light:   #F0FDFA;
+      --slate:        #475569;
+      --slate-light:  #F8FAFC;
+      --bg:           #FFFFFF;
+      --bg-card:      #FAFAFA;
+      --border:       #E2E8F0;
+      --text:         #0F172A;
+      --text-secondary: #475569;
+      --text-muted:   #94A3B8;
+      --font-sans:    'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
+      --font-display: 'Inter', system-ui, sans-serif;
+      --radius:       8px;
+      --radius-lg:    12px;
+      --shadow-sm:    0 1px 3px rgba(0,0,0,.08);
+      --shadow-md:    0 4px 16px rgba(0,0,0,.1);
+    }
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ── Layout ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── Nav ── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; max-width: 1100px; margin: 0 auto; padding: 0 1.5rem;
+    }
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--indigo);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 0.25rem; align-items: center; }
+    .nav-link {
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .nav-link:hover { background: var(--slate-light); color: var(--text); }
+    .nav-link-external::after { content: ' ↗'; font-size: 0.75rem; }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 5rem 0 3.5rem;
+      background: linear-gradient(135deg, var(--indigo-light) 0%, #fff 60%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--indigo);
+      margin-bottom: 0.75rem;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+    .hero-title em { font-style: normal; color: var(--indigo); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 540px;
+      margin-bottom: 2rem;
+    }
+    .hero-ctas { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.875rem;
+      text-decoration: none;
+      transition: all .15s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: var(--indigo); color: white; }
+    .btn-primary:hover { background: #3730a3; }
+    .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--indigo); color: var(--indigo); background: var(--indigo-light); }
+    .btn-ghost { background: transparent; color: var(--text-secondary); }
+    .btn-ghost:hover { background: var(--slate-light); color: var(--text); }
+    .btn-sm { padding: 0.4rem 0.875rem; font-size: 0.8rem; }
+    .btn-amber { background: var(--amber); color: white; }
+    .btn-amber:hover { background: #b45309; }
+
+    /* ── Stats strip ── */
+    .stats-strip {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 0;
+    }
+    .stats-grid { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+    .stat-number {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.75rem;
+      color: var(--indigo);
+      letter-spacing: -0.03em;
+    }
+    .stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; font-family: var(--font-mono); }
+
+    /* ── Section ── */
+    .section { padding: 4rem 0; }
+    .section-eyebrow {
+      font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--indigo); display: block; margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--font-display); font-weight: 800; font-size: clamp(1.5rem, 3vw, 2rem);
+      letter-spacing: -0.02em; color: var(--text); margin-bottom: 0.5rem;
+    }
+    .section-sub { font-size: 0.95rem; color: var(--text-secondary); max-width: 560px; }
+    .section-header { margin-bottom: 2.5rem; }
+
+    /* ── Tool cards ── */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .tool-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      transition: box-shadow .2s, border-color .2s;
+    }
+    .tool-card:hover { box-shadow: var(--shadow-md); border-color: var(--indigo); }
+    .tool-card-live { border-color: rgba(79,70,229,.35); background: linear-gradient(to bottom right, var(--indigo-light), var(--bg-card)); }
+    .tool-card-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .tool-card-badges { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .badge {
+      display: inline-block; padding: 2px 8px; border-radius: 99px;
+      font-size: 0.7rem; font-weight: 600; font-family: var(--font-mono);
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    .badge-indigo { background: var(--indigo-light); color: var(--indigo); }
+    .badge-amber  { background: var(--amber-light);  color: var(--amber);  }
+    .badge-teal   { background: var(--teal-light);   color: var(--teal);   }
+    .badge-slate  { background: var(--slate-light);  color: var(--slate);  }
+    .live-badge {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 0.72rem; font-weight: 600; color: #16a34a; font-family: var(--font-mono);
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .tool-card-title { font-weight: 800; font-size: 1.1rem; letter-spacing: -0.01em; color: var(--text); }
+    .tool-card-subtitle { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); margin-top: -0.4rem; }
+    .tool-card-desc { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.55; flex: 1; }
+    .tech-chips { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .tech-chip {
+      background: var(--slate-light); color: var(--slate);
+      padding: 2px 7px; border-radius: 5px;
+      font-size: 0.72rem; font-family: var(--font-mono); font-weight: 500;
+    }
+    .tool-card-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.25rem; }
+    .tool-card-links { display: flex; gap: 0.5rem; align-items: center; }
+
+    /* ── DocCraft group callout ── */
+    .doccraft-group {
+      background: linear-gradient(135deg, var(--indigo-light) 0%, var(--bg-card) 100%);
+      border: 1.5px solid rgba(79,70,229,.2);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .doccraft-group-label {
+      font-family: var(--font-mono); font-size: 0.68rem; text-transform: uppercase;
+      letter-spacing: .12em; color: var(--indigo); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .doccraft-group-label::after {
+      content: ''; flex: 1; height: 1px; background: rgba(79,70,229,.2);
+    }
+    .doccraft-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 640px) { .doccraft-pair { grid-template-columns: 1fr; } }
+
+    /* ── Footer ── */
+    .footer { border-top: 1px solid var(--border); background: var(--bg-card); padding: 3rem 0 1.5rem; }
+    .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media (max-width: 640px) { .footer-inner { grid-template-columns: 1fr; } }
+    .footer-logo { font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: var(--indigo); margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.85rem; color: var(--text-secondary); max-width: 280px; }
+    .footer-col-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--text); margin-bottom: 0.75rem; font-family: var(--font-mono); }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .footer-link { font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; }
+    .footer-link:hover { color: var(--indigo); }
+    .footer-bottom {
+      border-top: 1px solid var(--border); padding-top: 1.25rem;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;
+      font-size: 0.8rem; color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════════════════ -->
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">AI &amp; Automation Tools</a>
+    <div class="nav-links">
+      <a href="https://sulagnasasmal.github.io/doc-portal/" class="nav-link nav-link-external" target="_blank" rel="noopener">DOC Portal</a>
+      <a href="https://sulagnasasmal.com/" class="nav-link nav-link-external" target="_blank" rel="noopener">Portfolio</a>
+      <a href="https://github.com/sulagnasasmal" class="nav-link nav-link-external" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Built Tools · AI &amp; Automation</p>
+    <h1 class="hero-title">AI-Powered<br/><em>Documentation Tools</em></h1>
+    <p class="hero-sub">
+      Beyond writing docs — I build the tools that make documentation smarter.
+      Five production-grade applications covering generation, search, analytics,
+      OpenAPI rendering, and video automation.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://doccraft-ten.vercel.app/" class="btn btn-primary" target="_blank" rel="noopener">Launch DocCraft AI ↗</a>
+      <a href="https://sulagnasasmal.github.io/doc-portal/" class="btn btn-outline" target="_blank" rel="noopener">View Writing Samples →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     STATS
+════════════════════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-number">5</div>
+        <div class="stat-label">Tools Built</div>
+      </div>
+      <div>
+        <div class="stat-number">3</div>
+        <div class="stat-label">Live Apps</div>
+      </div>
+      <div>
+        <div class="stat-number">4</div>
+        <div class="stat-label">AI / LLM Integrations</div>
+      </div>
+      <div>
+        <div class="stat-number">GPT-4o</div>
+        <div class="stat-label">Primary AI Model</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     TOOLS
+════════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+
+    <div class="section-header">
+      <span class="section-eyebrow">All Tools</span>
+      <h2 class="section-title">What I've Built</h2>
+      <p class="section-sub">AI-powered and automation tools — each one solves a real workflow problem in technical documentation.</p>
+    </div>
+
+    <!-- DocCraft AI + DocCraft Help Center grouped -->
+    <div class="doccraft-group">
+      <p class="doccraft-group-label">🤖 DocCraft Suite</p>
+      <div class="doccraft-pair">
+
+        <!-- DocCraft AI -->
+        <div class="tool-card tool-card-live" style="border:none; background:transparent; padding:0;">
+          <div class="tool-card-header">
+            <div class="tool-card-badges">
+              <span class="badge badge-indigo">AI Tool</span>
+              <span class="badge badge-indigo">GPT-4o</span>
+            </div>
+            <div class="live-badge"><span class="live-dot"></span>Live</div>
+          </div>
+          <div class="tool-card-title">DocCraft AI</div>
+          <div class="tool-card-subtitle">AI Documentation Generator</div>
+          <p class="tool-card-desc">
+            Next.js 14 / GPT-4o SaaS app that generates production-ready documentation from raw source files.
+            Five doc templates, MSTP style compliance checking, Mermaid diagram auto-generation, inline AI editing,
+            glossary enforcement, and document history — deployed live on Vercel.
+          </p>
+          <div class="tech-chips">
+            <span class="tech-chip">Next.js 14</span>
+            <span class="tech-chip">TypeScript</span>
+            <span class="tech-chip">GPT-4o</span>
+            <span class="tech-chip">Tailwind CSS</span>
+            <span class="tech-chip">Vercel</span>
+          </div>
+          <div class="tool-card-footer">
+            <div style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);">5 templates · MSTP checker</div>
+            <div class="tool-card-links">
+              <a href="https://doccraft-ten.vercel.app/" class="btn btn-primary btn-sm" target="_blank" rel="noopener">Open App ↗</a>
+              <a href="https://github.com/SulagnaSasmal/Doccraft" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DocCraft Help Center -->
+        <div class="tool-card" style="border:none; background:transparent; padding:0;">
+          <div class="tool-card-header">
+            <div class="tool-card-badges">
+              <span class="badge badge-indigo">Knowledge Base</span>
+            </div>
+          </div>
+          <div class="tool-card-title">DocCraft Help Center</div>
+          <div class="tool-card-subtitle">Self-Service Documentation</div>
+          <p class="tool-card-desc">
+            Full self-service help center written for DocCraft AI users. Covers getting started, a 20-item FAQ
+            across 4 sections, 6 troubleshooting scenarios, feature guides, and complete release history
+            from v1.0.0 through v1.4.0.
+          </p>
+          <div class="tech-chips">
+            <span class="tech-chip">HTML</span>
+            <span class="tech-chip">CSS</span>
+            <span class="tech-chip">JavaScript</span>
+            <span class="tech-chip">Accordion Search</span>
+          </div>
+          <div class="tool-card-footer">
+            <div style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);">6 pages · 20 FAQ items</div>
+            <div class="tool-card-links">
+              <a href="https://sulagnasasmal.github.io/doccraft-help-center/" class="btn btn-outline btn-sm" target="_blank" rel="noopener">View Docs ↗</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Remaining tools grid -->
+    <div class="tools-grid">
+
+      <!-- SpecFlow -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-card-badges">
+            <span class="badge badge-indigo">AI Tool</span>
+            <span class="badge badge-slate">OpenAPI</span>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span>Live</div>
+        </div>
+        <div class="tool-card-title">SpecFlow</div>
+        <div class="tool-card-subtitle">OpenAPI Developer Portal Generator</div>
+        <p class="tool-card-desc">
+          Upload any OpenAPI 3.x spec (YAML/JSON) and instantly get a fully rendered developer portal.
+          Features grouped endpoint navigation, schema trees, an interactive Try-It Console, authentication
+          panel (API Key, Bearer, OAuth2, HTTP Basic), server selector, webhook explorer, and search.
+        </p>
+        <div class="tech-chips">
+          <span class="tech-chip">Next.js 14</span>
+          <span class="tech-chip">TypeScript</span>
+          <span class="tech-chip">Tailwind CSS</span>
+          <span class="tech-chip">swagger-parser</span>
+          <span class="tech-chip">Monaco Editor</span>
+        </div>
+        <div class="tool-card-footer">
+          <div style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);">Live API console · Auth panel</div>
+          <div class="tool-card-links">
+            <a href="https://sulagnasasmal.github.io/specflow/" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Live Site ↗</a>
+            <a href="https://github.com/SulagnaSasmal/specflow" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DocQuery -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-card-badges">
+            <span class="badge badge-amber">RAG</span>
+            <span class="badge badge-indigo">AI Tool</span>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span>Live</div>
+        </div>
+        <div class="tool-card-title">DocQuery</div>
+        <div class="tool-card-subtitle">RAG Documentation Chatbot</div>
+        <p class="tool-card-desc">
+          A complete RAG pipeline: crawl documentation sites, split with section-aware chunking, embed with
+          OpenAI text-embedding-3-small, store in ChromaDB, and answer questions with GPT-4o-mini citing
+          exact sources. Chat frontend with source cards, confidence badges (green/amber/red), and automatic
+          content-gap logging for low-confidence answers.
+        </p>
+        <div class="tech-chips">
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">FastAPI</span>
+          <span class="tech-chip">LangChain</span>
+          <span class="tech-chip">ChromaDB</span>
+          <span class="tech-chip">OpenAI</span>
+          <span class="tech-chip">Next.js 14</span>
+        </div>
+        <div class="tool-card-footer">
+          <div style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);">RAG · confidence scoring · gap tracker</div>
+          <div class="tool-card-links">
+            <a href="https://sulagnasasmal.github.io/docquery/" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Live Site ↗</a>
+            <a href="https://github.com/SulagnaSasmal/docquery" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- DocPulse -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-card-badges">
+            <span class="badge badge-teal">Analytics</span>
+            <span class="badge badge-slate">Dashboard</span>
+          </div>
+          <div class="live-badge"><span class="live-dot"></span>Live</div>
+        </div>
+        <div class="tool-card-title">DocPulse</div>
+        <div class="tool-card-subtitle">Documentation Analytics Dashboard</div>
+        <p class="tool-card-desc">
+          A lightweight analytics platform for documentation sites. JavaScript tracker (&lt;5KB, no cookies,
+          anonymous sessions) embeds in any doc site. FastAPI + SQLite backend with a Next.js dashboard:
+          page views, search analytics, GitHub-based content freshness scoring, feature coverage matrix,
+          feedback collection, and weekly Markdown report generation.
+        </p>
+        <div class="tech-chips">
+          <span class="tech-chip">JavaScript</span>
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">FastAPI</span>
+          <span class="tech-chip">SQLite</span>
+          <span class="tech-chip">Next.js 14</span>
+          <span class="tech-chip">Recharts</span>
+        </div>
+        <div class="tool-card-footer">
+          <div style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);">5 dashboard modules · weekly reports</div>
+          <div class="tool-card-links">
+            <a href="https://sulagnasasmal.github.io/docpulse/" class="btn btn-outline btn-sm" target="_blank" rel="noopener">Live Site ↗</a>
+            <a href="https://github.com/SulagnaSasmal/docpulse" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PPT → MP4 -->
+      <div class="tool-card">
+        <div class="tool-card-header">
+          <div class="tool-card-badges">
+            <span class="badge badge-amber">Automation</span>
+            <span class="badge badge-slate">Azure TTS</span>
+          </div>
+        </div>
+        <div class="tool-card-title">PPT → MP4 Automation</div>
+        <div class="tool-card-subtitle">PowerPoint to Narrated Video</div>
+        <p class="tool-card-desc">
+          End-to-end pipeline: upload a <code style="font-family:var(--font-mono); font-size:.85em; background:var(--slate-light); padding:1px 4px; border-radius:3px;">.pptx</code> → get back a narrated <code style="font-family:var(--font-mono); font-size:.85em; background:var(--slate-light); padding:1px 4px; border-radius:3px;">.mp4</code>.
+          Extracts slide notes (python-pptx), generates narration via Azure TTS (Jenny Neural),
+          exports animated video via PowerPoint COM, muxes audio + video with FFmpeg. REST API with async
+          job queue, dark-mode SaaS web interface.
+        </p>
+        <div class="tech-chips">
+          <span class="tech-chip">Python</span>
+          <span class="tech-chip">FastAPI</span>
+          <span class="tech-chip">Azure TTS</span>
+          <span class="tech-chip">PowerPoint COM</span>
+          <span class="tech-chip">FFmpeg</span>
+          <span class="tech-chip">pywin32</span>
+        </div>
+        <div class="tool-card-footer">
+          <div style="font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono);">5 endpoints · async jobs · MP4 output</div>
+          <div class="tool-card-links">
+            <a href="https://github.com/SulagnaSasmal/ppt-to-mp4-doc-automation" class="btn btn-outline btn-sm" target="_blank" rel="noopener">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tools-grid -->
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     DOC PORTAL BANNER
+════════════════════════════════════════════════════════════ -->
+<div style="background:var(--bg-card); border-top:1px solid var(--border); padding:2.5rem 0;">
+  <div class="container">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1.5rem;">
+      <div>
+        <p style="font-family:var(--font-mono); font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.12em; margin-bottom:0.4rem;">📚 Writing Samples</p>
+        <h3 style="font-family:var(--font-display); font-weight:800; font-size:1.3rem; letter-spacing:-0.02em; margin-bottom:0.3rem;">Looking for documentation writing samples?</h3>
+        <p style="font-size:0.875rem; color:var(--text-secondary);">API references, admin guides, knowledge bases, compliance training — at DOC Portal.</p>
+      </div>
+      <a href="https://sulagnasasmal.github.io/doc-portal/" class="btn btn-outline" target="_blank" rel="noopener">Visit DOC Portal →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div>
+        <div class="footer-logo">AI &amp; Automation Tools</div>
+        <p class="footer-tagline">
+          AI-powered documentation tools by Sulagna Sasmal —
+          Technical Writer, Documentation Architect & Builder.
+        </p>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Tools</p>
+        <ul class="footer-links">
+          <li><a href="https://doccraft-ten.vercel.app/" class="footer-link" target="_blank" rel="noopener">DocCraft AI ↗</a></li>
+          <li><a href="https://sulagnasasmal.github.io/specflow/" class="footer-link" target="_blank" rel="noopener">SpecFlow ↗</a></li>
+          <li><a href="https://sulagnasasmal.github.io/docquery/" class="footer-link" target="_blank" rel="noopener">DocQuery ↗</a></li>
+          <li><a href="https://sulagnasasmal.github.io/docpulse/" class="footer-link" target="_blank" rel="noopener">DocPulse ↗</a></li>
+          <li><a href="https://github.com/SulagnaSasmal/ppt-to-mp4-doc-automation" class="footer-link" target="_blank" rel="noopener">PPT→MP4 ↗</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="footer-col-title">Connect</p>
+        <ul class="footer-links">
+          <li><a href="https://sulagnasasmal.github.io/doc-portal/" class="footer-link" target="_blank" rel="noopener">DOC Portal ↗</a></li>
+          <li><a href="https://sulagnasasmal.com/" class="footer-link" target="_blank" rel="noopener">Portfolio ↗</a></li>
+          <li><a href="https://github.com/sulagnasasmal" class="footer-link" target="_blank" rel="noopener">GitHub ↗</a></li>
+          <li><a href="https://www.linkedin.com/in/sulagnasasmal" class="footer-link" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Sulagna Sasmal · Technical Writer &amp; Documentation Engineer</span>
+      <span style="font-family:var(--font-mono); font-size:0.75rem;">ai-doc-tools v1.0</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
