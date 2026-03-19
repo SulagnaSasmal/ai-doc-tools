@@ -1,6 +1,6 @@
-# AI & Automation Tools — Sulagna Sasmal
+# AI & Automation Tools
 
-A landing page and hub for AI-powered documentation and automation tools built by Sulagna Sasmal — DocCraft AI, SpecFlow, DocQuery, DocPulse, and the PPT→MP4 pipeline.
+A landing page and hub for AI-powered documentation and automation tools built by Sulagna Sasmal: DocCraft AI, SpecFlow, DocQuery, DocPulse, and the PPT→MP4 pipeline.
 
 ## Live Demo
 
@@ -10,7 +10,7 @@ Hosted on GitHub Pages: `sulagnasasmal.github.io/ai-doc-tools/`
 
 | Tool | Purpose | Link |
 |------|---------|------|
-| DocCraft AI | AI documentation generator — converts raw content into polished, MSTP-compliant docs | [Repo](https://github.com/SulagnaSasmal/Doccraft) |
+| DocCraft AI | AI documentation generator: converts raw content into polished, MSTP-compliant docs | [Repo](https://github.com/SulagnaSasmal/Doccraft) |
 | SpecFlow | OpenAPI 3.x → interactive developer portal (browser-based, no build step) | [Repo](https://github.com/SulagnaSasmal/specflow) |
 | DocQuery | RAG-powered documentation chatbot with source citations | [Repo](https://github.com/SulagnaSasmal/docquery) |
 | DocPulse | Documentation analytics dashboard (page views, search failures, content freshness) | [Repo](https://github.com/SulagnaSasmal/docpulse) |
@@ -18,7 +18,7 @@ Hosted on GitHub Pages: `sulagnasasmal.github.io/ai-doc-tools/`
 
 ## Tech Stack
 
-- Single HTML file (inline CSS + JS — zero external dependencies)
+- Single HTML file (inline CSS + JS, zero external dependencies)
 - Inter / JetBrains Mono fonts
 - Light and dark mode support
 
@@ -28,7 +28,7 @@ The page supports dark and light themes via a toggle button (◐ / ☀) in the n
 
 ## Status
 
-**Infrastructure — Complete**
+**Infrastructure: Complete**
 
 | Area | Status |
 |------|--------|
